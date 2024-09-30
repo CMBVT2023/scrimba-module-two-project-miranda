@@ -1,33 +1,35 @@
 import React from "react"
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import Card from "./components/Card"
-
-/*
-Challenge:
-
-- import the array of data from data.js
-- map over the array to create <Card /> components
-- display the array of card components under the navbar
-  (in place of the current <Card /> component)
-
-Note: We haven't styled the group of components yet, so they'll
-still be block elements, stacked vertically. We'll add styling later.
-*/
+import {Navbar} from "./components/Navbar.jsx"
+import {Hero} from "./components/Hero.jsx"
+import {Card} from "./components/Card.jsx"
+import cardData from './data.js';
+import './style.css';
 
 export function App() {
-            // <Hero />
     return (
-        <div>
-            <Navbar />
+      <div>
+          <Navbar />
+          <Hero />
+
+          {cardData.map(data => 
             <Card 
-                img="katie-zaferes.png"
-                rating="5.0"
-                reviewCount={6}
-                location="USA"
-                title="Life Lessons with Katie Zaferes"
-                price={136}
+              key={'card-' + Math.random()}
+              img={data.coverImg}
+              rating={data.stats.rating}
+              reviewCount={data.stats.reviewCount}
+              location={data.location}
+              title={data.title}
+              price={data.price}
             />
-        </div>
+          )}
+          {/* <Card 
+              img="katie-zaferes.png"
+              rating="5.0"
+              reviewCount={6}
+              location="USA"
+              title="Life Lessons with Katie Zaferes"
+              price={136}
+          /> */}
+      </div>
     )
 }
