@@ -18,7 +18,7 @@ export function Card(props) {
     // directory was having it point the outer most project directory instead.
     // To fix this importing the current url of the web project using import.meta.url and appending the location of the assets folder relative to the Card component fixes this issue since no
     // matter where the component gets loaded, the reference to the asset file is now dynamic.
-    let photoImage = new URL(`../assets/${props.img}`, import.meta.url);
+    let photoImage = new URL(`../assets/${props.coverImg}`, import.meta.url);
     let badgeText;
     if (props.openSpots == 0) {
         badgeText = "SOLD OUT";
@@ -32,8 +32,8 @@ export function Card(props) {
             <img src={photoImage} className="card--image" />
             <div className="card--stats">
                 <img src={starImage} className="card--star" />
-                <span>{props.rating}</span>
-                <span className="gray">({props.reviewCount}) • </span>
+                <span>{props.stats.rating}</span>
+                <span className="gray">({props.stats.reviewCount}) • </span>
                 <span className="gray">{props.location}</span>
             </div>
             <p>{props.title}</p>

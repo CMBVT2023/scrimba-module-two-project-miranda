@@ -15,13 +15,7 @@ export function App() {
             {cardData.map(data => 
               <Card 
                 key={'card-' + Math.random()}
-                openSpots={data.openSpots}
-                img={data.coverImg}
-                rating={data.stats.rating}
-                reviewCount={data.stats.reviewCount}
-                location={data.location}
-                title={data.title}
-                price={data.price}
+                {...data}
               />
             )}
           </section>
