@@ -11,25 +11,19 @@ export function App() {
           <Navbar />
           <Hero />
 
-          {cardData.map(data => 
-            <Card 
-              key={'card-' + Math.random()}
-              img={data.coverImg}
-              rating={data.stats.rating}
-              reviewCount={data.stats.reviewCount}
-              location={data.location}
-              title={data.title}
-              price={data.price}
-            />
-          )}
-          {/* <Card 
-              img="katie-zaferes.png"
-              rating="5.0"
-              reviewCount={6}
-              location="USA"
-              title="Life Lessons with Katie Zaferes"
-              price={136}
-          /> */}
+          <section className="cards-list">
+            {cardData.map(data => 
+              <Card 
+                key={'card-' + Math.random()}
+                img={data.coverImg}
+                rating={data.stats.rating}
+                reviewCount={data.stats.reviewCount}
+                location={data.location}
+                title={data.title}
+                price={data.price}
+              />
+            )}
+          </section>
       </div>
     )
 }
