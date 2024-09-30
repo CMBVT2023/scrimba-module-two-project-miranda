@@ -10,6 +10,7 @@ import starImage from "../assets/star.png";
  * @param {string} location - Card's Location.
  * @param {string} title - Card's Title.
  * @param {number} price - Card's Price.
+ * @param {number} openSpots - Amount of Spot Left for the Experience.
  */
 export function Card(props) {
     // The issue that the instructor was explaining in the Scrimba video is caused by the file location of the actual DOM or webpage, index.html, not being the same as the elements that make up the webpage
@@ -18,9 +19,16 @@ export function Card(props) {
     // To fix this importing the current url of the web project using import.meta.url and appending the location of the assets folder relative to the Card component fixes this issue since no
     // matter where the component gets loaded, the reference to the asset file is now dynamic.
     let photoImage = new URL(`../assets/${props.img}`, import.meta.url);
+    let badgeText;
+    if (props.openSpots == 0) {
+        badgeText = "SOLD OUT";
+    } else if (props.location == "Online") {
+        badgeText = "ONLINE";
+    };
 
     return (
         <div className="card">
+            {badgeText && <div className="card--badge">{badgeText}</div>}
             <img src={photoImage} className="card--image" />
             <div className="card--stats">
                 <img src={starImage} className="card--star" />
